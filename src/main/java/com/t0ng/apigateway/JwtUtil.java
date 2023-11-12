@@ -23,11 +23,7 @@ public class JwtUtil {
     }
 
     public Claims getAllClaimsFromToken(String token) {
-        try {
-            return Jwts.parser().setSigningKey(key).build().parseClaimsJws(token).getBody();
-        } catch (ExpiredJwtException e) {
-            return null;
-        }
+        return Jwts.parser().setSigningKey(key).build().parseClaimsJws(token).getBody();
     }
 
     private boolean isTokenExpired(String token) {
